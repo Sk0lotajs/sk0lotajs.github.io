@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Адвент-календарь 🎄</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login-container" class="centered">
+    <h1>🎄 Адвент-календарь 🎁</h1>
+    <p>Выберите своё имя:</p>
+    <select id="student-select">
+      <option value="">-- Выберите ученика --</option>
+      <option>Аня</option>
+      <option>Богдан</option>
+      <option>Вика</option>
+      <option>Глеб</option>
+      <option>Даша</option>
+      <option>Егор</option>
+      <option>Женя</option>
+      <option>Злата</option>
+      <option>Илья</option>
+      <option>Кира</option>
+      <option>Лена</option>
+      <option>Марк</option>
+      <option>Никита</option>
+      <option>Оля</option>
+      <option>Павел</option>
+      <option>Рита</option>
+      <option>Соня</option>
+      <option>Тимур</option>
+    </select><br>
+    <button id="login-btn">Войти</button>
+  </div>
+
+  <div id="calendar-container" class="hidden">
+    <div class="header">
+      <h2 id="student-name"></h2>
+      <button id="logout-btn">Выйти</button>
+    </div>
+    <div id="calendar" class="calendar-grid"></div>
+  </div>
+
+  <!-- ОБЯЗАТЕЛЬНО добавь hidden здесь ↓↓↓ -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+      <h3 id="question-title"></h3>
+      <div id="question-container"></div>
+      <button id="submit-answer">Отправить</button>
+      <p id="feedback"></p>
+    </div>
+  </div>
+
+  <script src = "questions.js"></script>
+  <script src = "script.js"></script>
+</body>
+</html>
