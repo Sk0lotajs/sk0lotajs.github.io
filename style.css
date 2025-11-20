@@ -1,173 +1,132 @@
-/* Общие стили */
+/* ---------- Общие стили ---------- */
+
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background: #f2f4f7;
-  color: #222;
-}
-
-/* Центровка */
-.centered-container {
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: linear-gradient(160deg, #d3e8ff, #f3f7ff, #e7f8f1);
+  background-size: 200% 200%;
+  animation: winterGlow 12s ease infinite;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
 }
 
-/* Карточка авторизации */
-.card {
-  background: white;
-  padding: 24px;
-  border-radius: 16px;
+/* Нежная зимняя анимация фона */
+@keyframes winterGlow {
+  0% { background-position: 0 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* ---------- Карточка авторизации ---------- */
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 350px;
-  box-shadow: 0 4px 16px rgb(0 0 0 / 0.1);
+  padding: 16px;
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  padding: 32px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
   text-align: center;
+  border: 2px solid rgba(255,255,255,0.7);
 }
 
-.input {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  margin-bottom: 16px;
+/* ---------- Текст ---------- */
+
+.auth-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #20457c;
 }
 
-/* Кнопки */
-.btn {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background: #4a7bff;
-  color: white;
+.auth-subtitle {
+  margin-top: 8px;
+  margin-bottom: 24px;
   font-size: 16px;
-  border-radius: 10px;
-  cursor: pointer;
+  color: #496a92;
+}
+
+/* ---------- Поле выбора ---------- */
+
+.auth-select {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #c8d7f0;
+  background: #ffffff;
+  margin-bottom: 24px;
   transition: 0.2s;
 }
 
-.btn:hover {
-  opacity: 0.9;
+.auth-select:focus {
+  border-color: #4b8cff;
+  outline: none;
 }
 
-.btn.small {
-  width: auto;
-  padding: 8px 14px;
-  font-size: 14px;
-}
+/* ---------- Кнопка ---------- */
 
-.btn.full {
+.auth-btn {
   width: 100%;
-}
-
-/* Заголовок + кнопка выхода */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 16px;
-}
-
-/* Календарь */
-.calendar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  padding: 16px;
-}
-
-/* День */
-.day {
-  background: white;
-  border-radius: 14px;
-  aspect-ratio: 1/1;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-  transition: transform 0.2s;
-}
-
-.day:active {
-  transform: scale(0.95);
-}
-
-.day.opened {
-  background: #d7f7d7;
-  border: 2px solid #34c759;
-}
-
-/* Модальное окно */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.modal-content {
-  background: white;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 16px;
-  padding: 24px;
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-/* Крестик */
-.close {
-  position: absolute;
-  right: 16px;
-  top: 12px;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-/* Блоки вопросов */
-.question-block {
-  margin-bottom: 20px;
-}
-
-.question-block p {
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 8px;
+  background: #4b8cff;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 14px rgba(75,140,255,0.35);
 }
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  resize: vertical;
-  font-size: 15px;
+.auth-btn:hover {
+  background: #3c77e6;
 }
 
-/* Адаптивность */
+.auth-btn:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Адаптивность ---------- */
+
 @media (max-width: 480px) {
-  .calendar {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+  .auth-card {
+    padding: 24px;
+    border-radius: 16px;
   }
 
-  .day {
-    font-size: 20px;
+  .auth-title {
+    font-size: 26px;
   }
 
-  .modal-content {
-    padding: 18px;
+  .auth-btn {
+    padding: 14px;
+    font-size: 17px;
+  }
+
+  .auth-select {
+    padding: 12px;
+    font-size: 15px;
   }
 }
 
-.hidden {
-  display: none;
+/* iPhone safe-area support */
+.auth-wrapper {
+  padding: max(16px, env(safe-area-inset-top))
+           max(16px, env(safe-area-inset-right))
+           max(16px, env(safe-area-inset-bottom))
+           max(16px, env(safe-area-inset-left));
 }
