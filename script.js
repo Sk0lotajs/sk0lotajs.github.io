@@ -1,4 +1,4 @@
-const loginContainer = document.getElementById("login-container");
+const loginContainer = document.getElementById("login-screen");
 const calendarContainer = document.getElementById("calendar-container");
 const loginBtn = document.getElementById("login-btn");
 const logoutBtn = document.getElementById("logout-btn");
