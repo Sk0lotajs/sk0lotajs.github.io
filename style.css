@@ -1,132 +1,407 @@
-/* ---------- Общие стили ---------- */
+/* ===============  БАЗОВЫЕ СТИЛИ  =============== */
+:root{
+  --bg-1: #0f2a3d;        /* глубокий сине-зелёный фон */
+  --bg-2: #0b3750;        /* градиент */
+  --card: #ffffff;        /* карточки */
+  --accent: #f7b733;      /* тёплый акцент (золото) */
+  --accent-2: #4b8cff;    /* синий акцент */
+  --muted: #6b778a;       /* нейтральный текст */
+  --open-green: #b9f6ca;
+  --danger: #ff6b6b;
+}
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", Arial, sans-serif;
-  background: linear-gradient(160deg, #d3e8ff, #f3f7ff, #e7f8f1);
-  background-size: 200% 200%;
-  animation: winterGlow 12s ease infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Вспомогательная нормализация */
+* { box-sizing: border-box; }
+html,body { height: 100%; margin: 0; }
+
+/* Фон страницы — тёплый предновогодний градиент + лёгкий снежок */
+body{
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #0d1b2a;
+  background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.04), transparent 10%),
+              linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
   min-height: 100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  position: relative;
+  overflow-y: auto;
 }
 
-/* Нежная зимняя анимация фона */
-@keyframes winterGlow {
-  0% { background-position: 0 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0 50%; }
+/* Лёгкая анимация падающего снега (CSS-only approximation) */
+body::after{
+  pointer-events: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.75) 0.5px, transparent 0.6px),
+    radial-gradient(circle, rgba(255,255,255,0.6) 0.5px, transparent 0.7px);
+  background-size: 100px 100px, 200px 200px;
+  opacity: 0.12;
+  animation: snow 18s linear infinite;
+  z-index: 0;
+}
+@keyframes snow {
+  0% { transform: translateY(-10vh); }
+  100% { transform: translateY(110vh); }
 }
 
-/* ---------- Карточка авторизации ---------- */
-
-.auth-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 16px;
+/* ===============  АВТОРИЗАЦИЯ (LOGIN)  =============== */
+.centered {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding: 24px;
+  z-index: 2;
+  position: relative;
 }
 
-.auth-card {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(6px);
-  padding: 32px;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 420px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+.centered > h1 {
+  margin: 0 0 8px 0;
+  color: #fff;
+  text-shadow: 0 6px 18px rgba(11,41,63,0.6);
+  font-size: 28px;
+  letter-spacing: 0.4px;
+}
+
+/* Карточка с рамкой — все элементы внутри */
+#login-container .card {
+  width:100%;
+  max-width:460px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,255,0.98));
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(2,10,22,0.45);
+  border: 2px solid rgba(255,255,255,0.06);
   text-align: center;
-  border: 2px solid rgba(255,255,255,0.7);
+  position: relative;
+  z-index: 3;
 }
 
-/* ---------- Текст ---------- */
-
-.auth-title {
-  margin: 0;
-  font-size: 32px;
-  font-weight: 700;
-  color: #20457c;
-}
-
-.auth-subtitle {
-  margin-top: 8px;
-  margin-bottom: 24px;
-  font-size: 16px;
-  color: #496a92;
-}
-
-/* ---------- Поле выбора ---------- */
-
-.auth-select {
+/* Если у тебя нет wrapper .card в HTML — применим то же к #login-container */
+#login-container {
   width: 100%;
-  padding: 14px;
-  font-size: 16px;
+  max-width: 520px;
+}
+
+/* Обёртка и рамка вокруг содержимого (для визуальной целостности) */
+#login-container {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,255,0.9));
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+/* Заголовок и подсказка — делаем светлыми и читаемыми */
+#login-container h1 {
+  color: #07223a;
+  margin: 0 0 6px 0;
+  font-size: 28px;
+}
+#login-container p {
+  margin: 0 0 18px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Селект — большая и удобная для пальца область */
+#student-select {
+  width: 100%;
+  padding: 14px 12px;
   border-radius: 12px;
-  border: 1px solid #c8d7f0;
-  background: #ffffff;
-  margin-bottom: 24px;
-  transition: 0.2s;
-}
-
-.auth-select:focus {
-  border-color: #4b8cff;
+  border: 1px solid rgba(12,42,66,0.08);
+  font-size: 16px;
+  background: linear-gradient(180deg,#fff,#fbfdff);
+  margin-bottom: 14px;
+  appearance: none;
+  -webkit-appearance: none;
   outline: none;
+  color: #0d304a;
 }
 
-/* ---------- Кнопка ---------- */
-
-.auth-btn {
+/* Кнопка Войти — большая, заметная, с акцентом */
+#login-btn {
+  display:inline-block;
   width: 100%;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: 600;
-  background: #4b8cff;
+  padding: 14px 18px;
+  font-size: 17px;
+  font-weight: 700;
   color: white;
+  background: linear-gradient(180deg, var(--accent), #e68a00);
   border: none;
-  border-radius: 14px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: 0.2s;
-  box-shadow: 0 4px 14px rgba(75,140,255,0.35);
+  box-shadow: 0 8px 28px rgba(230,138,0,0.28), inset 0 -2px 6px rgba(0,0,0,0.08);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+#login-btn:active{ transform: translateY(1px) scale(.998); }
+#login-btn:focus{ outline: 3px solid rgba(75,140,255,0.18); }
+
+/* Если нужен перенос строки после select в твоём HTML, сохраним отступ */
+#login-container select + br { display: none; }
+
+/* ===============  КАЛЕНДАРЬ  =============== */
+#calendar-container {
+  max-width: 980px;
+  margin: 28px auto;
+  padding: 18px;
+  z-index: 2;
+  position: relative;
 }
 
-.auth-btn:hover {
-  background: #3c77e6;
+/* Хедер (имя и кнопка выйти) */
+.header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.header h2 {
+  margin:0;
+  color: #fff;
+  font-size: 20px;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+.header button {
+  background: rgba(255,255,255,0.95);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0b3750;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-.auth-btn:active {
-  transform: scale(0.97);
+/* Оформим контейнер календаря: рамка и фон с еловыми контурами */
+.calendar-grid {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(246,249,255,0.85));
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(2,8,20,0.35);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* ---------- Адаптивность ---------- */
+/* Сетка — адаптивная и крупная для сенсорных экранов */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* desktop by default */
+  gap: 14px;
+  align-items: stretch;
+  justify-items: center;
+}
 
-@media (max-width: 480px) {
-  .auth-card {
-    padding: 24px;
-    border-radius: 16px;
-  }
+/* Ячейка дня */
+.day {
+  width: 100%;
+  max-width: 120px;
+  aspect-ratio: 1 / 1;      /* квадратная */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #fff, #f7fbff);
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(2,8,20,0.12);
+  font-size: 22px;
+  font-weight: 700;
+  color: #0b3750;
+  cursor: pointer;
+  transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(11,55,80,0.04);
+}
 
-  .auth-title {
-    font-size: 26px;
-  }
+/* Визуальные праздничные элементы внутри дня (иконка снежинки слева вверху) */
+.day::before{
+  content: "❄️";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  font-size: 14px;
+  opacity: 0.18;
+  transform: rotate(-10deg);
+}
 
-  .auth-btn {
-    padding: 14px;
-    font-size: 17px;
-  }
+/* При нажатии — лёгкая анимация */
+.day:active { transform: translateY(2px) scale(.996); }
 
-  .auth-select {
+/* Доступные дни (hover) */
+.day:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(2,8,20,0.18);
+}
+
+/* Открытый день — яркое оформление */
+.day.opened {
+  background: linear-gradient(180deg, #fffef2, var(--open-green));
+  color: #064e23;
+  box-shadow: 0 14px 30px rgba(7,80,40,0.12);
+  border: 2px solid rgba(81,204,144,0.18);
+}
+
+/* Заблокированные будущие дни — полупрозрачные и с иконкой замка */
+.day[style*="not-allowed"], .day[style*="opacity: 0.5"]{
+  opacity: 0.56 !important;
+  cursor: not-allowed !important;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Можно добавить индикатор дня (маленький кружок с числом) — но наш дизайн уже использует число в центре */
+
+/* Мелкие декоративные снежные гирлянды вокруг календаря */
+.calendar-grid::before, .calendar-grid::after{
+  content: "";
+  position: absolute;
+  height: 80px;
+  width: 100%;
+  left: 0;
+  pointer-events: none;
+}
+.calendar-grid::before{
+  top: -22px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+}
+.calendar-grid::after{
+  bottom: -22px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+}
+
+/* ===============  МОДАЛЬНОЕ ОКНО  =============== */
+.modal.hidden { display: none; }
+
+/* скрытые элементы */
+.hidden {
+  display: none !important;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg, rgba(2,8,20,0.45), rgba(2,8,20,0.65));
+  z-index: 40;
+  padding: 18px;
+}
+
+/* Контент модалки — праздничная карточка */
+.modal-content{
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 22px 60px rgba(2,8,20,0.6);
+  position: relative;
+  border: 1px solid rgba(11,55,80,0.06);
+}
+
+/* Крестик закрытия */
+.close{
+  position: absolute;
+  right: 14px;
+  top: 8px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #0b3750;
+  opacity: .8;
+}
+
+/* Заголовок модалки */
+.modal-content h3{
+  margin: 0 0 12px 0;
+  color: #0b3750;
+  font-size: 20px;
+}
+
+/* Контейнер вопросов */
+.question-block {
+  margin-bottom: 14px;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(11,55,80,0.02), rgba(11,55,80,0.01));
+  border: 1px solid rgba(11,55,80,0.03);
+}
+
+.question-block p {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #12324a;
+}
+
+/* Текстовое поле */
+textarea, input[type="text"] {
+  width: 100%;
+  min-height: 56px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(11,55,80,0.08);
+  resize: vertical;
+  font-size: 15px;
+  color: #052231;
+}
+
+/* Радиокнопки и метки */
+label { font-size: 15px; color: #12324a; cursor: pointer; }
+
+/* Кнопка Отправить */
+#submit-answer {
+  display:block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(180deg,var(--accent-2), #2b6fe6);
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(43,111,230,0.2);
+}
+
+/* Фидбек */
+#feedback { margin-top: 10px; font-weight:700; }
+
+/* ===============  АДАПТИВ  =============== */
+/* Tablet */
+@media (max-width: 1024px) {
+  .calendar-grid { grid-template-columns: repeat(5, 1fr); }
+  #login-container { max-width: 540px; margin: 18px auto; }
+}
+
+/* Mobile — Android / iPhone */
+@media (max-width: 640px) {
+  /* центрируем логин по середине экрана */
+  .centered {
     padding: 12px;
-    font-size: 15px;
+    min-height: calc(100vh - 24px);
   }
+
+  /* календарь 3 колонки для телефонов */
+  .calendar-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 12px; }
+
+  /* уменьшаем размер клетки */
+  .day { max-width: 110px; font-size: 18px; border-radius: 12px; }
+
+  .modal-content { padding: 16px; max-width: 420px; border-radius: 12px; }
+  #login-btn { padding: 12px; font-size: 16px; border-radius: 10px; }
+  #student-select { padding: 12px; font-size: 15px; border-radius: 10px; }
 }
 
-/* iPhone safe-area support */
-.auth-wrapper {
-  padding: max(16px, env(safe-area-inset-top))
-           max(16px, env(safe-area-inset-right))
-           max(16px, env(safe-area-inset-bottom))
-           max(16px, env(safe-area-inset-left));
+/* Очень маленькие экраны (iPhone SE) */
+@media (max-width: 360px) {
+  .calendar-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .day { font-size: 16px; max-width: 140px; }
+  #login-container { padding: 16px; border-radius: 12px; }
 }
