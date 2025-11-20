@@ -45,18 +45,17 @@ button:hover {
 }
 
 .day {
-  width: 80px;
-  height: 80px;
   background: #fff;
-  border-radius: 15px;
+  border-radius: 12px;
+  font-size: 20px;
+  padding: 20px;
+  aspect-ratio: 1/1; /* делает клетки квадратными */
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-weight: bold;
-  font-size: 1.2em;
+  align-items: center;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: scale 0.2s;
 }
 
 .day.opened {
@@ -77,8 +76,9 @@ button:hover {
 
 .modal-content {
   background: white;
-  padding: 30px;
-  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 12px;
   width: 300px;
   text-align: center;
   box-shadow: 0 3px 10px rgba(0,0,0,0.3);
@@ -88,4 +88,37 @@ button:hover {
   float: right;
   font-size: 24px;
   cursor: pointer;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+}
+
+.day:active {
+  scale: 0.95;
+}
+
+.menu-container {
+  padding: 20px;
+}
+
+@media (max-width: 480px) {
+  .calendar {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .day {
+    font-size: 22px;
+    padding: 16px;
+  }
+
+  .menu-container {
+    padding: 16px;
+  }
 }
