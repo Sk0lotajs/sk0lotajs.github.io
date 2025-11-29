@@ -41,8 +41,8 @@ function showCalendar(name) {
   studentName.textContent = `Sveicināti, ${name}!`;
 
   calendar.innerHTML = "";
-  const totalDays = 24;
-  const today = new Date().getDate(); //можно поменять на 24 для теста
+  const totalDays = 18;
+  const today = new Date().getDate();
   const studentData = JSON.parse(localStorage.getItem(`answers_${name}`)) || {};
 
   for (let day = 1; day <= totalDays; day++) {
@@ -53,7 +53,7 @@ function showCalendar(name) {
     if (studentData[day]) cell.classList.add("opened");
 
 // Разрешён только сегодняшний день
-if (day <= today) {
+if (day === today) {
   cell.classList.add("available");
   cell.addEventListener("click", () => openQuestion(day, cell));
 } 
@@ -75,7 +75,9 @@ function openQuestion(day, element) {
   const studentData = JSON.parse(localStorage.getItem(`answers_${currentStudent}`)) || {};
 
   // --- Блокировка повторного открытия ---
-  if (studentData[day]) {
+  if (studentData[day] && (day === 6 || day === 7 || day === 8 || day === 13 || day === 14 || day === 2 || day === 12 || day === 17 || day === 18)) {
+    document.getElementById("submit-answer").classList.add("hidden");
+  } else if (studentData[day]) {
     alert("Šī diena jau ir atvērta! 🎁 Punkti par to tiek piešķirti tikai vienu reizi.");
     return;
   }
@@ -95,6 +97,7 @@ function openQuestion(day, element) {
     alert(`🎁 Diena ${day}: šodien tikai dāvana!`);
     if (!studentData[day]) {
       addPoints(currentStudent, 5);
+      logOpenToDB(currentStudent, currentDay, false, "", getPoints(currentStudent));
     }
     return;
   }
@@ -121,6 +124,11 @@ function openQuestion(day, element) {
         block.appendChild(lbl);
         block.appendChild(document.createElement("br"));
       });
+    } else if (q.type === "info") {
+      const info = document.createElement("p");
+      info.textContent = q.content;
+      block.appendChild(info);
+      document.getElementById("submit-answer").textContent = "Labi!";
     }
 
     questionContainer.appendChild(block);
@@ -198,6 +206,7 @@ function saveAnswer(student, day, answers) {
   const data = JSON.parse(localStorage.getItem(key)) || {};
   data[day] = answers;
   localStorage.setItem(key, JSON.stringify(data));
+  logOpenToDB(currentStudent, currentDay, true, "", getPoints(currentStudent));
 }
 
 // --- Отправка данных в Google Sheets ---
@@ -362,4 +371,25 @@ function sendGiftToEmail(student, email, gift, cost, code, qrURL) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   });
+}
+
+async function logOpenToDB(student, day, completed, email, points) {
+    try {
+        await fetch("https://script.google.com/macros/s/AKfycbzYXLA2fI3PHvrtpjLJ2_MygGj5UTpIiLT5KxbMDY9fLbZG5v-37y6lhgQdi58szPFZ/exec", {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                student,
+                day,
+                completed,
+                email,
+                points
+            })
+        });
+    } catch (e) {
+        console.log("Kļūda, sūtot datus uz DB:", e);
+    }
 }
