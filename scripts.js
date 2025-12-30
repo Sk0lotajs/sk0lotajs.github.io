@@ -58,14 +58,14 @@ function goToStep(index) {
     currentStep = index;
 }
 
-document.querySelectorAll('[data-race]').forEach(card => {
+document.querySelectorAll('#step-race .card').forEach(card => {
     card.addEventListener('click', () => {
         character.race = card.dataset.race;
         goToStep(1);
     });
 });
 
-document.querySelectorAll('[data-class]').forEach(card => {
+document.querySelectorAll('#step-class .card').forEach(card => {
     card.addEventListener('click', () => {
         character.class = card.dataset.class;
         goToStep(2);
@@ -211,4 +211,5 @@ document.getElementById('confirm-stats').addEventListener('click', () => {
     });
 
     goToStep(3);
+
 });
