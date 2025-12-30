@@ -8,6 +8,13 @@
 </head>
 <body>
     <div class = "page">
+        <div class="progress">
+            <div class = "progress-step active">Раса</div>
+            <div class = "progress-step">Класс</div>
+            <div class = "progress-step">Имя</div>
+            <div class = "progress-step">Характеристики</div>
+        </div>
+    <section id = "step-race" class = "step active">
     <h1>Выбери себе расу:</h1>
     <div class = "cards">
         <div class = "card">
@@ -531,6 +538,7 @@
             </div>
         </div>
     </div>
+    </section>
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <button class="modal-close">&times;</button>
@@ -538,8 +546,176 @@
             <p id="modal-text"></p>
         </div>
     </div>
+    <section id = "step-class" class = "step">
+        <h1>Выбери себе класс:</h1>
+        <div class = "cards-classes">
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "bard">!</div>
+                    <h3>Бард</h3>
+                    <span class = "eng">Bard</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-bard.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "barbarian">!</div>
+                    <h3>Варвар</h3>
+                    <span class = "eng">Barbarian</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-barbarian.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "fighter">!</div>
+                    <h3>Воин</h3>
+                    <span class = "eng">Fighter</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-fighter.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "wizard">!</div>
+                    <h3>Волшебник</h3>
+                    <span class = "eng">Wizard</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-wizard.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "druid">!</div>
+                    <h3>Друид</h3>
+                    <span class = "eng">Druid</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-druid.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "cleric">!</div>
+                    <h3>Жрец</h3>
+                    <span class = "eng">Cleric</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-cleric.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "artificer">!</div>
+                    <h3>Изобретатель</h3>
+                    <span class = "eng">Artificer</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-artificer.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "warlock">!</div>
+                    <h3>Колдун</h3>
+                    <span class = "eng">Warlock</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-warlock.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "monk">!</div>
+                    <h3>Монах</h3>
+                    <span class = "eng">Monk</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-monk.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "paladin">!</div>
+                    <h3>Паладин</h3>
+                    <span class = "eng">Paladin</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-paladin.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "rogue">!</div>
+                    <h3>Плут</h3>
+                    <span class = "eng">Rogue</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-rogue.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "ranger">!</div>
+                    <h3>Следопыт</h3>
+                    <span class = "eng">Ranger</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-ranger.webp">
+                </div>
+            </div>
+            <div class = "card">
+                <div class = "card-info">
+                <div class="info-btn" data-race = "sorcerer">!</div>
+                    <h3>Чародей</h3>
+                    <span class = "eng">Sorcerer</span>
+                </div>
+                <div class = "card-class-image">
+                    <img src = "./images/classes/class-sorcerer.webp">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id = "step-stats" class = "step">
+        <h1>Распредели характеристики персонажа:</h1>
+        <div class = 'stat-assigned'>
+            <span class = 'priority'>1</span>
+            <span class = 'name'>Сила</span>
+        </div>
+        <div class = 'stat-assigned'>
+            <span class = 'priority'>2</span>
+            <span class = 'name'>Ловкость</span>
+        </div>
+        <div class = 'stat-selectable'>
+            <span class = 'priority'>3</span>
+            <select>
+                <option>Мудрость</option>
+                <option>Телосложение</option>
+                <option>Интеллект</option>
+                <option>Харизма</option>
+            </select>
+        </div>
+        <div class = 'stat-selectable'>
+            <span class = 'priority'>4</span>
+            <select>
+                <option>Мудрость</option>
+                <option>Телосложение</option>
+                <option>Интеллект</option>
+                <option>Харизма</option>
+            </select>
+        </div>
+    </section>
+    <section id = "step-name" class = "step">
+        <h1>Как зовут твоего персонажа?</h1>
+        <input type = "text" id = "char-name" placeholder = "Введите имя персонажа">
+        <button id = "finish">Завершить создание</button>
+    </section>
+    </div>
 </body>
 <script src = "scripts.js"></script>
-
 </html>
-
