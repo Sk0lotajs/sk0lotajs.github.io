@@ -68,6 +68,7 @@ document.querySelectorAll('#step-race .card').forEach(card => {
 document.querySelectorAll('#step-class .card').forEach(card => {
     card.addEventListener('click', () => {
         character.class = card.dataset.class;
+        generateAndShowStats();
         goToStep(2);
     });
 });
@@ -103,13 +104,13 @@ const RACE_BONUSES = {
     aarakocra: {dex: 2, wis: 1},
     aasimar: {cha: 2},
     aven: {dex: 2},
-    autognome: {int: 2, con: 1},
+    autognome: {'free1': 2, 'free2': 1},
     bugbear: {str: 2, dex: 1},
     vedalken: {int: 2, wis: 1},
     verdan: {cha: 2, con: 1},
-    "simic-hybrid": {con: 2, int: 1},
+    "simic-hybrid": {con: 2, 'free1': 1},
     gith: {int: 1},
-    giff: {con: 2, str: 1},
+    giff: {'free1': 2, 'free2': 1},
     gnome: {int: 2},
     goblin: {dex: 2, con: 1},
     goliath: {str: 2, con: 1},
@@ -117,13 +118,13 @@ const RACE_BONUSES = {
     dwarf: {con: 2},
     genasi: {con: 2},
     dragonborn: {str: 2, cha: 1},
-    changeling: {cha: 2, int: 1},
+    changeling: {cha: 2, 'free1': 1},
     kalashtar: {wis: 2, cha: 1},
-    kender: {dex: 2, cha: 1},
+    kender: {'free1': 2, 'free2': 1},
     kenku: {dex: 2, wis: 1},
     centaur: {str: 2, wis: 1},
     kobold: {dex: 2},
-    warforged: {con: 2, str: 1},
+    warforged: {con: 2, 'free1': 1},
     leonin: {str: 2, con: 1},
     locathah: {str: 2, dex: 1},
     loxodon: {con: 2, wis: 1},
@@ -131,7 +132,7 @@ const RACE_BONUSES = {
     minotaur: {str: 2, con: 1},
     naga: {con: 2, int: 1},
     orc: {str: 2, con: 1},
-    plasmoid: {con: 2, cha: 1},
+    plasmoid: {'free1': 2, 'free2': 1},
     "half-orc": {str: 2, con: 1},
     halfling: {dex: 2},
     "half-elf": {cha: 2, 'free1': 1},
@@ -155,9 +156,14 @@ const RACE_BONUSES = {
 }
 
 function rollStat() {
-    const rolls = Array.from({length: 6}, () => Math.floor(Math.random() * 6) + 1);
+    const rolls = Array.from({length: 4}, () => Math.floor(Math.random() * 6) + 1);
     rolls.sort((a, b) => b - a);
-    return rolls[0] + rolls[1] + rolls[2];
+    let sum = rolls[0] + rolls[1] + rolls[2];
+
+    if (sum >= 17 && Math.random() < 0.6) sum--;
+    if (sum === 18 && Math.random() < 0.7) sum --;
+
+    return sum;
 }
 
 function generateStats() {
@@ -203,6 +209,14 @@ function generateAndShowStats() {
             </div>
         `;
     });
+
+    const freeBonuses = getFreeRaceBonuses(character.race);
+    const statsContainer = document.getElementById('stats-container');
+
+    if (freeBonuses.length) {
+        renderFreeBonusSelection(statsContainer, freeBonuses);
+        preventDuplicateSelections(statsContainer);
+    }
 }
 
 document.getElementById('confirm-stats').addEventListener('click', () => {
@@ -210,6 +224,79 @@ document.getElementById('confirm-stats').addEventListener('click', () => {
         character.stats[select.value] = Number(select.dataset.value);
     });
 
-    goToStep(3);
+    applyFixedRaceBonuses(character.stats, character.race);
+    applyFreeRaceBonuses(character.stats, document.getElementById('stats-container'));
 
+    goToStep(3);
 });
+
+// ASDASSDASD
+// aSDASDAD
+// ASDASD
+// ASDASD
+// ASDASDA
+
+function applyFixedRaceBonuses(stats, race) {
+    const bonuses = RACE_BONUSES[race];
+    if (!bonuses) return stats;
+
+    for (const [key, value] of Object.entries(bonuses)) {
+        if (!key.startsWith('free')) {
+            stats[key] += value;
+        }
+    }
+}
+
+function getFreeRaceBonuses(race) {
+    const bonuses = RACE_BONUSES[race];
+    if (!bonuses) return [];
+
+    return Object.entries(bonuses)
+        .filter(([key]) => key.startsWith('free'))
+        .map(([_, value]) => value);
+}
+
+function renderFreeBonusSelection(container, freeBonuses) {
+    freeBonuses.forEach((bonus, index) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'free-bonus';
+
+        wrapper.innerHTML = `
+        <h3>Выберите характеристику для бонуса от расы [${index + 1}]:</h3>
+            <label>
+                +${bonus} к
+                <select data-bonus="${bonus}">
+                    ${STATS.map(stat =>
+                        `<option value="${stat}">${STAT_NAMES[stat]}</option>`
+                    ).join('')}
+                </select>
+            </label>
+        `;
+
+        container.appendChild(wrapper);
+    });
+}
+
+function preventDuplicateSelections(container) {
+    const selects = container.querySelectorAll('select');
+
+    selects.forEach(select => {
+        select.addEventListener('change', () => {
+            const used = Array.from(selects).map(s => s.value);
+
+            selects.forEach(s => {
+                Array.from(s.options).forEach(opt => {
+                    opt.disabled = used.includes(opt.value) && opt.value !== s.value;
+                });
+            });
+        });
+    });
+}
+
+function applyFreeRaceBonuses(stats, container) {
+    container.querySelectorAll('select').forEach(select => {
+        const stat = select.value;
+        const bonus = Number(select.dataset.bonus);
+        stats[stat] += bonus;
+    });
+}
