@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang = "ru">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>D&D Создание персонажа</title>
+    <link rel = "stylesheet" href = "styles.css">
+</head>
+<body>
+    <div class = "page">
+    <h1>Выбери себе расу:</h1>
+    <div class = "cards">
+        <div class = "card">
+            <div class="info-btn" data-race = "aarakocra">!</div>
+            <div class = "card-info">
+                <h3>Ааракокра</h3>
+                <span class = "eng">Aarakocra</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-aarakocra.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "aasimar">!</div>
+            <div class = "card-info">
+                <h3>Аасимар</h3>
+                <span class = "eng">Aasimar</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-aasimar.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "aven">!</div>
+            <div class = "card-info">
+                <h3>Авен</h3>
+                <span class = "eng">Aven</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-aven.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "autognome">!</div>
+            <div class = "card-info">
+                <h3>Автогном</h3>
+                <span class = "eng">Autognome</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-autognome.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "bugbear">!</div>
+            <div class = "card-info">
+                <h3>Багбир</h3>
+                <span class = "eng">Bugbear</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-bugbear.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "vedalken">!</div>
+            <div class = "card-info">
+                <h3>Ведалкен</h3>
+                <span class = "eng">Vedalken</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-vedalken.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "verdan">!</div>
+            <div class = "card-info">
+                <h3>Вердан</h3>
+                <span class = "eng">Verdan</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-verdan.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "simic-hybrid">!</div>
+            <div class = "card-info">
+                <h3>Гибрид Симиков</h3>
+                <span class = "eng">Simic Hybrid</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-simic-hybrid.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "gith">!</div>
+            <div class = "card-info">
+                <h3>Гит</h3>
+                <span class = "eng">Gith</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-gith.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "giff">!</div>
+            <div class = "card-info">
+                <h3>Гифф</h3>
+                <span class = "eng">Giff</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-giff.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "gnome">!</div>
+            <div class = "card-info">
+                <h3>Гном</h3>
+                <span class = "eng">Gnome</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-gnome.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "goblin">!</div>
+            <div class = "card-info">
+                <h3>Гоблин</h3>
+                <span class = "eng">Goblin</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-goblin.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "goliath">!</div>
+            <div class = "card-info">
+                <h3>Голиаф</h3>
+                <span class = "eng">Goliath</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-goliath.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "grung">!</div>
+            <div class = "card-info">
+                <h3>Грунг</h3>
+                <span class = "eng">Grung</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-grung.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "dwarf">!</div>
+            <div class = "card-info">
+                <h3>Дварф</h3>
+                <span class = "eng">Dwarf</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-dwarf.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "genasi">!</div>
+            <div class = "card-info">
+                <h3>Дженази</h3>
+                <span class = "eng">Genasi</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-genasi.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "dragonborn">!</div>
+            <div class = "card-info">
+                <h3>Драконорожденный</h3>
+                <span class = "eng">Dragonborn</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-dragonborn.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "changeling">!</div>
+            <div class = "card-info">
+                <h3>Изменяющиеся</h3>
+                <span class = "eng">Changeling</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-changeling.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "kalashtar">!</div>
+            <div class = "card-info">
+                <h3>Калаштар</h3>
+                <span class = "eng">Kalashtar</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-kalashtar.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "kender">!</div>
+            <div class = "card-info">
+                <h3>Кендер</h3>
+                <span class = "eng">Kender</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-kender.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "kenku">!</div>
+            <div class = "card-info">
+                <h3>Кенку</h3>
+                <span class = "eng">Kenku</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-kenku.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "centaur">!</div>
+            <div class = "card-info">
+                <h3>Кентавр</h3>
+                <span class = "eng">Centaur</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-centaur.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "kobold">!</div>
+            <div class = "card-info">
+                <h3>Кобольд</h3>
+                <span class = "eng">Kobold</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-kobold.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "warforged">!</div>
+            <div class = "card-info">
+                <h3>Кованый</h3>
+                <span class = "eng">Warforged</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-warforged.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "leonin">!</div>
+            <div class = "card-info">
+                <h3>Леонин</h3>
+                <span class = "eng">Leonin</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-leonin.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "locathah">!</div>
+            <div class = "card-info">
+                <h3>Локата</h3>
+                <span class = "eng">Locathah</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-locathah.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "loxodon">!</div>
+            <div class = "card-info">
+                <h3>Локсодон</h3>
+                <span class = "eng">Loxodon</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-loxodon.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "lizardfolk">!</div>
+            <div class = "card-info">
+                <h3>Людоящер</h3>
+                <span class = "eng">Lizardfolk</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-lizardfolk.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "minotaur">!</div>
+            <div class = "card-info">
+                <h3>Минотавр</h3>
+                <span class = "eng">Minotaur</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-minotaur.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "naga">!</div>
+            <div class = "card-info">
+                <h3>Нага</h3>
+                <span class = "eng">Naga</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-naga.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "orc">!</div>
+            <div class = "card-info">
+                <h3>Орк</h3>
+                <span class = "eng">Orc</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-orc.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "plasmoid">!</div>
+            <div class = "card-info">
+                <h3>Плазмоид</h3>
+                <span class = "eng">Plasmoid</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-plasmoid.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "half-orc">!</div>
+            <div class = "card-info">
+                <h3>Полуорк</h3>
+                <span class = "eng">Half-Orc</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-half-orc.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "halfling">!</div>
+            <div class = "card-info">
+                <h3>Полурослик</h3>
+                <span class = "eng">Halfling</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-halfling.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "half-elf">!</div>
+            <div class = "card-info">
+                <h3>Полуэльф</h3>
+                <span class = "eng">Half-Elf</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-half-elf.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "satyr">!</div>
+            <div class = "card-info">
+                <h3>Сатир</h3>
+                <span class = "eng">Satyr</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-satyr.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "owlin">!</div>
+            <div class = "card-info">
+                <h3>Совлин</h3>
+                <span class = "eng">Owlin</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-owlin.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "tabaxi">!</div>
+            <div class = "card-info">
+                <h3>Табакси</h3>
+                <span class = "eng">Tabaxi</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-tabaxi.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "tiefling">!</div>
+            <div class = "card-info">
+                <h3>Тифлинг</h3>
+                <span class = "eng">Tiefling</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-tiefling.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "tortle">!</div>
+            <div class = "card-info">
+                <h3>Тортл</h3>
+                <span class = "eng">Tortle</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-tortle.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "thri-kreen">!</div>
+            <div class = "card-info">
+                <h3>Три-крин</h3>
+                <span class = "eng">Thri-Kreen</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-thri-kreen.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "triton">!</div>
+            <div class = "card-info">
+                <h3>Тритон</h3>
+                <span class = "eng">Triton</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-triton.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "firbolg">!</div>
+            <div class = "card-info">
+                <h3>Фирболг</h3>
+                <span class = "eng">Firbolg</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-firbolg.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "fairy">!</div>
+            <div class = "card-info">
+                <h3>Фэйри</h3>
+                <span class = "eng">Fairy</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-fairy.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "hadozee">!</div>
+            <div class = "card-info">
+                <h3>Хадози</h3>
+                <span class = "eng">Hadozee</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-hadozee.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "harengon">!</div>
+            <div class = "card-info">
+                <h3>Харенгон</h3>
+                <span class = "eng">Harengon</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-harengon.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "khenra">!</div>
+            <div class = "card-info">
+                <h3>Хенра</h3>
+                <span class = "eng">Khenra</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-khenra.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "hobgoblin">!</div>
+            <div class = "card-info">
+                <h3>Хобгоблин</h3>
+                <span class = "eng">Hobgoblin</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-hobgoblin.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "human">!</div>
+            <div class = "card-info">
+                <h3>Человек</h3>
+                <span class = "eng">Human</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-human.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "shifter">!</div>
+            <div class = "card-info">
+                <h3>Шифтер</h3>
+                <span class = "eng">Shifter</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-shifter.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "elf">!</div>
+            <div class = "card-info">
+                <h3>Эльф</h3>
+                <span class = "eng">Elf</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-elf.webp">
+            </div>
+        </div>
+        <div class = "card">
+            <div class="info-btn" data-race = "yuan-ti">!</div>
+            <div class = "card-info">
+                <h3>Юань-ти</h3>
+                <span class = "eng">Yuan-ti</span>
+            </div>
+            <div class = "card-image">
+                <img src = "./images/races/race-yuan-ti.webp">
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <h2 id="modal-title"></h2>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+</body>
+<script src = "scripts.js"></script>
+</html>
