@@ -228,6 +228,7 @@ document.getElementById('confirm-stats').addEventListener('click', () => {
     applyFreeRaceBonuses(character.stats, document.getElementById('stats-container'));
 
     goToStep(3);
+    renderClassEquipment();
 });
 
 // ASDASSDASD
@@ -300,3 +301,177 @@ function applyFreeRaceBonuses(stats, container) {
         stats[stat] += bonus;
     });
 }
+
+const CLASS_LOADOUTS = {
+    bard: {
+        skills: {
+            choose: 3,
+            options: ['Атлетика', 'Акробатика', 'Ловкость рук', 'Скрытность', 'Магия', 'История', 'Анализ', 'Природа', 'Религия', 'Уход за животными', 'Проницательность', 'Медицина', 'Внимательность', 'Выживание', 'Обман', 'Запугивание', 'Выступление', 'Убеждение']
+        },
+
+        weaponChoice: [
+            ['Рапира', 'Длинный меч', {custom: 'Любое простое оружие'}]
+        ],
+
+        equipmentChoice: [
+            ['Набор дипломата', 'Набор артиста'],
+            ['Лютня', {custom: 'Любой другой музыкальный инструмент'}]
+        ],
+
+        autoEquipment: [
+            'Кожаная броня',
+            'Кинжал'
+        ]
+    }
+}
+
+function renderClassEquipment() {
+    const container = document.getElementById('equipment-container');
+    container.innerHTML = '';
+
+    const loadout = CLASS_LOADOUTS[character.class];
+    if (!loadout) return;
+
+    const skillsBlock = document.createElement('div');
+    skillsBlock.innerHTML = `<h3>Выберите ${loadout.skills.choose} навыка</h3>`;
+
+    loadout.skills.options.forEach(skill => {
+        skillsBlock.innerHTML += `
+            <label>
+                <input type="checkbox" class="skill-checkbox" value="${skill}">
+                ${skill}
+            </label><br>
+        `;
+    });
+
+    container.appendChild(skillsBlock);
+
+    loadout.weaponChoice.forEach((options, i) => {
+        const optionsHTML = options.map(o => {
+            if (typeof o === 'string') {
+                return `<option value="${o}">${o}</option>`;
+            } else if (o.custom) {
+                return `<option value="custom">${o.custom}</option>`;
+            }
+        }).join('');
+        
+        container.innerHTML += `
+            <div class = 'weapon-selection-group'>
+                <h3>Выберите оружие</h3>
+                <select class = "weapon-select">
+                    ${optionsHTML}
+                </select>
+                <input type = "text" class = "custom-weapon-input" placeholder = "Укажите оружие" style = "display: none; margin-top: 10px;">
+            </div>
+        `;
+    });
+
+    container.addEventListener('change', (event) => {
+        if (event.target.classList.contains('weapon-select')) {
+            const select = event.target;
+            const customInput = select.nextElementSibling; 
+
+            if (select.value === 'custom') {
+                customInput.style.display = 'block';
+                customInput.focus();
+            } else {
+                customInput.style.display = 'none';
+                customInput.value = '';
+            }
+        }
+    });
+
+    loadout.equipmentChoice.forEach((options, i) => {
+        const optionsHTML = options.map(o => {
+            if (typeof o === 'string') {
+                return `<option value="${o}">${o}</option>`;
+            } else if (o.custom) {
+                return `<option value="custom">${o.custom}</option>`;
+            }
+        }).join('');
+
+        container.innerHTML += `
+            <div class = "equipment-block">
+                <h3>Выберите снаряжение</h3>
+                <select class = "equipment-select">
+                ${optionsHTML}
+                </select>
+                <input type = "text" class = "custom-equipment-input" placeholder = "Укажите снаряжение" style = "display: none; margin-top: 10px;">
+            </div>
+        `;
+    });
+
+    container.addEventListener('change', (event) => {
+        if (event.target.classList.contains('equipment-select')) {
+            const select = event.target;
+            const customInput = select.nextElementSibling; 
+
+            if (select.value === 'custom') {
+                customInput.style.display = 'block';
+                customInput.focus();
+            } else {
+                customInput.style.display = 'none';
+                customInput.value = '';
+            }
+        }
+    });
+
+    if (loadout.autoEquipment.length) {
+        container.innerHTML += `
+            <h3>Вы получаете автоматически</h3>
+            <ul>
+                ${loadout.autoEquipment.map(i => `<li>${i}</li>`).join('')}
+            </ul>
+        `;
+    }
+
+}
+
+document.addEventListener('change', e => {
+    if (!e.target.classList.contains('skill-checkbox')) return;
+
+    const checkboxes = document.querySelectorAll('.skill-checkbox');
+    const chosen = [...checkboxes].filter(c => c.checked);
+
+    const max = CLASS_LOADOUTS[character.class].skills.choose;
+
+    if (chosen.length > max) {
+        e.target.checked = false;
+        alert(`Можно выбрать только ${max} навыка`);
+    }
+});
+
+document.getElementById('confirm-equipment').addEventListener('click', () => {
+    character.skills = [...document.querySelectorAll('.skill-checkbox:checked')]
+        .map(c => c.value);
+
+    character.weapons = [...document.querySelectorAll('.weapon-select')]
+        .map(s => s.value);
+
+    character.equipment = [
+        ...[...document.querySelectorAll('.equipment-select')].map(s => s.value),
+        ...CLASS_LOADOUTS[character.class].autoEquipment
+    ];
+
+    goToStep(4);
+});
+
+const equipment = [];
+
+document.querySelectorAll('.equipment-block').forEach(block => {
+    const select = block.querySelector('select');
+    const input = block.querySelector('input');
+
+    if (select.value === 'custom') {
+        if (!input.value.trim()) {
+            alert('Введите название предмета');
+            throw new Error('Custom equipment empty');
+        }
+        equipment.push(input.value.trim());
+    } else {
+        equipment.push(select.value);
+    }
+});
+
+equipment.push(...CLASS_LOADOUTS[character.class].autoEquipment);
+character.equipment = equipment;
