@@ -13,6 +13,9 @@
             <div class = "progress-step">Класс</div>
             <div class = "progress-step">Характеристики</div>
             <div class = "progress-step">Оружие и навыки</div>
+            <div class = "progress-step">Заклинания</div>
+            <div class = "progress-step">Имя</div>
+            <div class = "progress-step">Результат</div>
         </div>
     <section id = "step-race" class = "step active">
     <h1>Выбери себе расу:</h1>
@@ -691,10 +694,19 @@
         <div id="equipment-container"></div>
         <button id="confirm-equipment">Подтвердить</button>
     </section>
+    <section class = "step" id = "step-spells">
+        <h2>Выбери заклинания</h2>
+        <div id = "spells-container"></div>
+        <button id="confirm-spells">Подтвердить</button>
+    </section>
     <section id = "step-name" class = "step">
         <h1>Как зовут твоего персонажа?</h1>
         <input type = "text" id = "char-name" placeholder = "Введите имя персонажа">
         <button id = "finish">Завершить создание</button>
+    </section>
+    <section id = "char" class = "step">
+        <h1>Твой герой:</h1>
+        <div id = "mychar"></div>
     </section>
     </div>
 </body>
