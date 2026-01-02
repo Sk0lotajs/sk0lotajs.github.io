@@ -1,0 +1,209 @@
+{
+    "aarakocra": {
+        "speed": 25,
+        "language": ["Общий", "Ауран", "Язык Ааракокр"]
+    },
+    "aasimar": {
+        "speed": 30,
+        "language": ["Общий", "Небесный"]
+    },
+    "aven": {
+        "speed": 25,
+        "language": ["Общий", "Авен"]
+    },
+    "autognome": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "bugbear": {
+        "speed": 30,
+        "language": ["Общий", "Гоблинский"]
+    },
+    "vedalken": {
+        "speed": 30,
+        "language": ["Общий", "Язык Велдакенов"]
+    },
+    "verdan": {
+        "speed": 30,
+        "language": ["Общий", "Гоблинский"]
+    },
+    "simic-hybrid": {
+        "speed": 30,
+        "language": ["Общий", "Эльфийский"]
+    },
+    "gith": {
+        "speed": 30,
+        "language": ["Общий", "Гитский"]
+    },
+    "giff": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "gnome": {
+        "speed": 25,
+        "language": ["Общий", "Гномий"]
+    },
+    "goblin": {
+        "speed": 30,
+        "language": ["Общий", "Гоблинский"]
+    },
+    "goliath": {
+        "speed": 30,
+        "language": ["Общий", "Гигантский"]
+    },
+    "grung": {
+        "speed": 25,
+        "language": ["Общий", "Язык Грунгов"]
+    },
+    "dwarf": {
+        "speed": 25,
+        "language": ["Общий", "Дварфский"]
+    },
+    "genasi": {
+        "speed": 30,
+        "language": ["Общий", "Первичный"]
+    },
+    "dragonborn": {
+        "speed": 30,
+        "language": ["Общий", "Драконий"]
+    },
+    "changeling": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "kalashtar": {
+        "speed": 30,
+        "language": ["Общий", "Куори"]
+    },
+    "kender": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "kenku": {
+        "speed": 30,
+        "language": ["Общий", "Первичный"]
+    },
+    "centaur": {
+        "speed": 40,
+        "language": ["Общий", "Сильван"]
+    },
+    "kobold": {
+        "speed": 30,
+        "language": ["Общий", "Драконий"]
+    },
+    "warforged": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "leonin": {
+        "speed": 35,
+        "language": ["Общий", "Леонский"]
+    },
+    "locathah": {
+        "speed": 30,
+        "language": ["Общий", "Акван"]
+    },
+    "loxodon": {
+        "speed": 30,
+        "language": ["Общий", "Язык Локсодонов"]
+    },
+    "lizardfolk": {
+        "speed": 30,
+        "language": ["Общий", "Драконий"]
+    },
+    "minotaur": {
+        "speed": 30,
+        "language": ["Общий", "Язык Минотавров"]
+    },
+    "naga": {
+        "speed": 30,
+        "language": ["Общий", "Язык Наг"]
+    },
+    "orc": {
+        "speed": 30,
+        "language": ["Общий", "Орочьи"]
+    },
+    "plasmoid": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "half-orc": {
+        "speed": 30,
+        "language": ["Общий", "Орочьи"]
+    },
+    "halfling": {
+        "speed": 25,
+        "language": ["Общий", "Язык Полуросликов"]
+    },
+    "half-elf": {
+        "speed": 30,
+        "language": ["Общий", "Эльфийский"]
+    },
+    "satyr": {
+        "speed": 35,
+        "language": ["Общий", "Сильван"]
+    },
+    "owlin": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "tabaxi": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "tiefling": {
+        "speed": 30,
+        "language": ["Общий", "Инфернальный"]
+    },
+    "tortle": {
+        "speed": 30,
+        "language": ["Общий", "Акван"]
+    },
+    "thri-kreen": {
+        "speed": 30,
+        "language": ["Отсутствует"]
+    },
+    "triton": {
+        "speed": 30,
+        "language": ["Общий", "Первичный"]
+    },
+    "firbolg": {
+        "speed": 30,
+        "language": ["Общий", "Эльфийский", "Гигантский"]
+    },
+    "fairy": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "hadozee": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "harengon": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "khenra": {
+        "speed": 35,
+        "language": ["Общий", "Язык Херна"]
+    },
+    "hobgoblin": {
+        "speed": 30,
+        "language": ["Общий", "Гоблинский"]
+    },
+    "human": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "shifter": {
+        "speed": 30,
+        "language": ["Общий"]
+    },
+    "elf": {
+        "speed": 30,
+        "language": ["Общий", "Эльфийский"]},
+    "yuan-ti": {
+        "speed": 30,
+        "language": ["Общий", "Драконий", "Язык Бездны"]
+    }
+}

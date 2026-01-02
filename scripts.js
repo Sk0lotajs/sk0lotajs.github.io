@@ -713,8 +713,8 @@ document.getElementById("finish").addEventListener('click', () => {
     goToStep(6);
     const mychar = document.getElementById("mychar");
     mychar.innerHTML = 'Имя твоего персонажа: ' + character.name + '<br>';
-    mychar.innerHTML += 'Раса твоего персонажа: ' + character.race + '<br>';
-    mychar.innerHTML += 'Класс твоего персонажа: ' + character.class + '<br>';
+    mychar.innerHTML += 'Раса твоего персонажа: ' + racesData[character.race] + '<br>';
+    mychar.innerHTML += 'Класс твоего персонажа: ' + racesData[character.class] + '<br>';
     mychar.innerHTML += 'Характеристики:<br>Сила: ' + character.stats.str + '. Модификатор: ' + Math.floor((Number(character.stats.str) - 10) / 2) + '<br>';
     mychar.innerHTML += 'Ловкость: ' + character.stats.dex + '. Модификатор: ' + Math.floor((Number(character.stats.dex) - 10) / 2) + '<br>';
     mychar.innerHTML += 'Телосложение: ' + character.stats.con + '. Модификатор: ' + Math.floor((Number(character.stats.con) - 10) / 2) + '<br>';

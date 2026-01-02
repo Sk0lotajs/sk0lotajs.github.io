@@ -1,0 +1,15 @@
+{
+    "bard": ["dex", "cha"],
+    "barbarian": ["str", "con"],
+    "fighter": ["str", "con"],
+    "wizard": ["int", "wis"],
+    "druid": ["int", "wis"],
+    "cleric": ["wis", "cha"],
+    "artificer": ["con", "int"],
+    "warlock": ["wis", "cha"],
+    "monk": ["str", "dex"],
+    "paladin": ["wis", "cha"],
+    "rogue": ["dex", "int"],
+    "ranger": ["str", "dex"],
+    "sorcerer": ["con", "cha"]
+}

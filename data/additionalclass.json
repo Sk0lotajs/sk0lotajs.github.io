@@ -1,0 +1,14 @@
+{
+    "bard": 2,
+    "barbarian": 0,
+    "fighter": 0,
+    "wizard": 2,
+    "druid": 2,
+    "cleric": 2,
+    "artificer": 2,
+    "warlock": 1,
+    "paladin": 0,
+    "rogue": 0,
+    "ranger": 0,
+    "sorcerer": 2
+}
