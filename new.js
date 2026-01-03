@@ -216,6 +216,9 @@ function renderChoices(choiceArray, characterField, title) {
 }
 
 function renderSpellsPhase() {
+    if (!spells[character.class]) {
+        renderNamePhase();
+    } else {
     document.querySelector('.character-creation').innerHTML = `
         <div class = "spells-container">
         </div>`
@@ -232,6 +235,7 @@ function renderSpellsPhase() {
         html += renderSpellBlock(1, classSpells.choose1, classSpells.spells1);
     }
     container.innerHTML = html + '<button onclick = "renderNamePhase()">Прожолжить</button>';
+    }
 }
 
 function renderSpellBlock(level, limit, options) {
@@ -292,6 +296,7 @@ function renderFinalPassport() {
     document.querySelector('.character-creation').innerHTML = `<div class = "final-passport-container"></div>`
     const container = document.querySelector('.final-passport-container');
     const getMod = (val) => Math.floor((val - 10) / 2);
+    if (spells[character.class]) {
     container.innerHTML = `
         <div class="passport-card">
             <header class="passport-header">
@@ -344,6 +349,58 @@ function renderFinalPassport() {
             <button class="btn-print" onclick="window.print()">Распечатать лист</button>
         </div>
     `;
+    } else {
+    container.innerHTML = `
+        <div class="passport-card">
+            <header class="passport-header">
+                <div class="char-main-info">
+                    <h1>${character.name}</h1>
+                    <p>${races[character.race].name} • ${classes[character.class].name}</p>
+                </div>
+            </header>
+            <div class="passport-body">
+                <section class="stats-grid-final">
+                    ${Object.entries(character.stats).map(([id, val]) => `
+                        <div class="stat-box">
+                            <span class="stat-label">${STAT_NAMES[id]}</span>
+                            <span class="stat-value">${val}</span>
+                            <span class="stat-mod">${getMod(val) >= 0 ? '+' : ''}${getMod(val)}</span>
+                        </div>
+                    `).join('')}
+                </section>
+                <div class="details-grid">
+                    <section class="details-block">
+                        <h3>Навыки</h3>
+                        <ul>${character.skills.map(s => `<li>${s}</li>`).join('')}</ul>
+                    </section>
+                    <section class="details-block">
+                        <h3>Экипировка и оружие</h3>
+                        <ul>
+                            ${character.weapons.map(w => `<li>⚔️ ${w}</li>`).join('')}
+                            ${character.equipments.map(e => `<li>📦 ${e}</li>`).join('')}
+                        </ul>
+                    </section>
+                        <section class="details-block">
+                            <h3>Книга заклинаний</h3>
+                            <small>Заговоры:</small>
+                            <p>Отсутствуют</p>
+                            <small>1-й уровень заклинаний:</small>
+                            <p>Отсутствуют</p>
+                        </section>
+                    <section class = "details-block">
+                        <h3>Дополнительные сведения</h3>
+                        <small>Языки:</small>
+                        <p>${additional[character.race].language.join(', ')}</p>
+                        <small>Ячеек заклинаний:</small>
+                        <p>${additionalclass[character.class]}</p>
+                        <small>Скорость:</small><p>${additional[character.race].speed} фт.</p>
+                    </section>
+                </div>
+            </div>
+            <button class="btn-print" onclick="window.print()">Распечатать лист</button>
+        </div>
+    `;
+    }
 }
 
 function checkSpellLimit(el, limit, level) {
