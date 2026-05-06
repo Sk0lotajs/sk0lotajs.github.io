@@ -1,0 +1,54 @@
+:root{
+  --bg1:#1e3c72; --bg2:#2a5298; --card:rgba(255,255,255,0.12);
+}
+*{box-sizing:border-box}
+body{font-family:Arial, sans-serif; background:linear-gradient(135deg,var(--bg1),var(--bg2)); color:white; margin:0}
+.container{padding:16px; max-width:900px; margin:0 auto}
+.card{background:var(--card); padding:16px; margin:12px auto; border-radius:16px; width:100%}
+h1{font-size:clamp(22px,5vw,32px); margin:10px 0}
+h2{font-size:clamp(18px,4.5vw,24px)}
+button{padding:12px 16px; border:none; border-radius:12px; margin:6px; cursor:pointer; font-size:16px; width:100%; max-width:320px}
+button:active{transform:scale(0.98)}
+input{padding:12px; border-radius:12px; border:none; margin:10px 0; width:100%; max-width:320px; font-size:16px}
+.hidden{display:none}
+
+/* Layout for options */
+#options{display:flex; flex-direction:column; align-items:center}
+
+/* Feedback */
+#feedback{min-height:24px; margin-top:10px; font-weight:bold}
+
+/* Tablet */
+@media (min-width:600px){
+  button{width:auto}
+  .card{padding:20px}
+}
+
+/* Desktop */
+@media (min-width:900px){
+  .container{padding:24px}
+  .card{max-width:700px}
+}
+
+#draggableList {
+  list-style: none;
+  padding: 0;
+}
+
+#draggableList li {
+  background: white;
+  color: black;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: grab;
+}
+
+#draggableList li:active {
+  cursor: grabbing;
+}
+
+#draggableList li {
+  touch-action: none; /* ļoti svarīgi mobilajam */
+  user-select: none;
+}
