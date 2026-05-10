@@ -1,0 +1,160 @@
+/* Основные настройки шрифтов и фона */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Контейнер приложения */
+.container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Заголовки */
+h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+#timer {
+    color: #e74c3c;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+#score {
+    color: #27ae60;
+    margin-bottom: 20px;
+}
+
+/* Карточки и блоки вопросов */
+.card, #questionBox {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#questionBox h2 {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-top: 0;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+/* Инпуты и Кнопки */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Стили для Radio и Checkbox */
+label {
+    display: block;
+    background: #fff;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+label:hover {
+    background: #eef7fe;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+/* Drag and Drop список */
+#draggableList {
+    list-style: none;
+    padding: 0;
+}
+
+#draggableList li {
+    background: #34495e;
+    color: white;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#draggableList li:active {
+    cursor: grabbing;
+    background: #2c3e50;
+}
+
+/* Обратная связь (feedback) */
+#feedback {
+    min-height: 50px;
+    font-weight: bold;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Адаптивность для мобилок */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+}
